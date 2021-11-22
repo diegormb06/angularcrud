@@ -1,0 +1,14 @@
+.site-header {
+  display: flex;
+  align-items: center;
+
+  .title-group {
+    padding-left: 25px;
+    display: flex;
+    align-items: center;
+
+    i {
+      padding-right: 5px;
+    }
+  }
+}
