@@ -12,7 +12,12 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
+import { HomeComponent } from './pages/home/home.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { CreateProductComponent } from './pages/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +25,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     HeaderComponent,
     FooterComponent,
     SideNavComponent,
+    HomeComponent,
+    ProductsComponent,
+    CreateProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,9 +35,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
