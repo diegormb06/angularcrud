@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from '../../models/Product.model';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -7,11 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private productService: ProductService) {}
 
-  ngOnInit(): void {}
+  products: Product[] = [];
 
-  navigateToProductCreate() {
-    this.router.navigate(['products/create']);
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe((products) => {
+      this.products = products;
+    });
+  }
+
+  async navigateToProductCreate() {
+    await this.router.navigate(['products/create']);
   }
 }
