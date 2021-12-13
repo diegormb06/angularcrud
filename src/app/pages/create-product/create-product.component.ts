@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/Product.model';
 
 @Component({
@@ -13,10 +13,19 @@ export class CreateProductComponent implements OnInit {
     name: '',
     price: null,
   };
+  params: {} | null = null;
 
-  constructor(private productService: ProductService, private router: Router) {}
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParamMap.subscribe((params) => {
+      this.params = { ...params.keys, ...params };
+    });
+  }
 
   createProduct(): void {
     this.productService.create(this.product).subscribe(() => {
