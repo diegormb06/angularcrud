@@ -11,11 +11,12 @@ import { ProductService } from '../../services/product.service';
 export class ProductsComponent implements OnInit {
   constructor(private router: Router, private productService: ProductService) {}
 
-  products: Product[] = [];
+  displayedColumns: string[] = ['id', 'name', 'price', 'action'];
+  dataSource: Product[] = [];
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((products) => {
-      this.products = products;
+      this.dataSource = products;
     });
   }
 
