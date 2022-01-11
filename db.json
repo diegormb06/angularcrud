@@ -2,13 +2,18 @@
   "products": [
     {
       "name": "Macbook m1",
-      "price": 7.999,
+      "price": "7.998",
       "id": "672318f4-5457-4709-de19-a5fa6aad70f9"
     },
     {
       "name": "Macbook m1",
-      "price": "6.999",
+      "price": "6.998",
       "id": "f48ea944-ac96-4603-c305-12e3b5780696"
+    },
+    {
+      "name": "SmartFone",
+      "price": "2000",
+      "id": "LUM-6eB"
     }
   ]
 }
