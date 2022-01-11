@@ -23,4 +23,12 @@ export class ProductsComponent implements OnInit {
   async navigateToProductCreate() {
     await this.router.navigate(['products/create']);
   }
+
+  deleteProduct(id: string): void {
+    console.log(id);
+    this.productService.deleteProduct(id).subscribe((_) => {
+      this.dataSource = this.dataSource.filter((item) => item.id !== id);
+      this.productService.showMessage('Produto deletado com sucesso!');
+    });
+  }
 }

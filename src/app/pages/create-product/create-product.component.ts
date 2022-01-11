@@ -13,7 +13,7 @@ export class CreateProductComponent implements OnInit {
     name: '',
     price: null,
   };
-  params: {} | null = null;
+  productId: string | null = null;
 
   constructor(
     private productService: ProductService,
@@ -22,14 +22,23 @@ export class CreateProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      this.params = params.get('id');
+    const productId = this.route.snapshot.paramMap.get('id');
+    this.productId = productId;
+    this.productService.getProductById(productId).subscribe((product) => {
+      this.product = product;
     });
   }
 
   createProduct(): void {
     this.productService.create(this.product).subscribe(() => {
       this.productService.showMessage('Produto Criado');
+      this.router.navigate(['/products']);
+    });
+  }
+
+  updateProduct(): void {
+    this.productService.updateProduct(this.product).subscribe((product) => {
+      this.productService.showMessage('Produto Atualizado');
       this.router.navigate(['/products']);
     });
   }
