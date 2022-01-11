@@ -22,8 +22,8 @@ export class CreateProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe((params) => {
-      this.params = { ...params.keys, ...params };
+    this.route.paramMap.subscribe((params) => {
+      this.params = params.get('id');
     });
   }
 
